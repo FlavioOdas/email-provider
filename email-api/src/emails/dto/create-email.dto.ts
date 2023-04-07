@@ -1,12 +1,14 @@
-import { IsNotEmpty, IsString, IsBoolean } from 'class-validator';
+import { IsNotEmpty, IsString, IsEmail } from 'class-validator';
 
 export class CreateEmailDto {
   @IsString()
   @IsNotEmpty()
+  @IsEmail()
   sender: string;
 
   @IsString()
   @IsNotEmpty()
+  @IsEmail()
   recipient: string;
 
   @IsString()
@@ -16,16 +18,4 @@ export class CreateEmailDto {
   @IsString()
   @IsNotEmpty()
   body: string;
-
-  @IsString()
-  @IsNotEmpty()
-  date: Date;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  read: boolean;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  deleted: boolean;
 }

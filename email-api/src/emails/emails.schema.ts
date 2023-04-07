@@ -19,13 +19,13 @@ export class Email {
   @Prop({ required: true })
   body: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, default: Date.now() })
   date: Date;
 
-  @Prop({ required: true })
+  @Prop({ required: true, default: false })
   read: boolean;
 
-  @Prop({ required: true })
+  @Prop({ required: true, default: false })
   deleted: boolean;
 }
 

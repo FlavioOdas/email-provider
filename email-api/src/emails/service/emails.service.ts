@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { EmailDocument } from '../emails.schema';
 import { CreateEmailDto } from '../dto/create-email.dto';
+import { UpdateEmailDto } from '../dto/update-email.dto';
 
 @Injectable()
 export class EmailsService {
@@ -55,6 +56,18 @@ export class EmailsService {
   async findBySender(sender: string): Promise<EmailDocument[]> {
     try {
       return await this.emailModel.find({ sender }).exec();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  // Update email
+  async update(id: string, emailData: UpdateEmailDto): Promise<EmailDocument> {
+    try {
+      return await this.emailModel
+        .findByIdAndUpdate(id, emailData, { new: true })
+        .exec();
     } catch (error) {
       console.error(error);
       throw error;

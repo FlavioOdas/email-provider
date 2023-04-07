@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Put } from '@nestjs/common';
 import { EmailsService } from '../service/emails.service';
 import { CreateEmailDto } from '../dto/create-email.dto';
 import { EmailDocument } from '../emails.schema';
+import { UpdateEmailDto } from '../dto/update-email.dto';
 
 @Controller('emails')
 export class EmailsController {
@@ -39,5 +40,14 @@ export class EmailsController {
     @Param('sender') sender: string,
   ): Promise<EmailDocument[]> {
     return await this.emailsService.findBySender(sender);
+  }
+
+  // Update email
+  @Put(':id')
+  async updateEmail(
+    @Param('id') id: string,
+    @Body() email: UpdateEmailDto,
+  ): Promise<EmailDocument> {
+    return await this.emailsService.update(id, email);
   }
 }
