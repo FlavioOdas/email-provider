@@ -26,10 +26,18 @@ export class EmailsController {
   }
 
   // Find all emails from a specific recipient
-  @Get(':recipient')
+  @Get('recipient/:recipient')
   async findByRecipient(
     @Param('recipient') recipient: string,
   ): Promise<EmailDocument[]> {
     return await this.emailsService.findByRecipient(recipient);
+  }
+
+  // Find all emails from a specific sender
+  @Get('sender/:sender')
+  async findBySender(
+    @Param('sender') sender: string,
+  ): Promise<EmailDocument[]> {
+    return await this.emailsService.findBySender(sender);
   }
 }

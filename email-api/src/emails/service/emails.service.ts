@@ -23,16 +23,41 @@ export class EmailsService {
 
   // Find all emails
   async findAll(): Promise<EmailDocument[]> {
-    return await this.emailModel.find().exec();
+    try {
+      return await this.emailModel.find().exec();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   // Find a single email
   async findOne(id: string): Promise<EmailDocument> {
-    return await this.emailModel.findById(id).exec();
+    try {
+      return await this.emailModel.findById(id).exec();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   // Find all emails from a specific recipient
   async findByRecipient(recipient: string): Promise<EmailDocument[]> {
-    return await this.emailModel.find({ recipient }).exec();
+    try {
+      return await this.emailModel.find({ recipient }).exec();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  // Find all emails from a specific sender
+  async findBySender(sender: string): Promise<EmailDocument[]> {
+    try {
+      return await this.emailModel.find({ sender }).exec();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 }
