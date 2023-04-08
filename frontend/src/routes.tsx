@@ -1,8 +1,6 @@
-import React from 'react';
-import { BrowserRouter, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
 
-import MainEmailPage from './components/MainPage';
-import { Constants } from './constants';
+import PageWrapper from "./components/PageWrapper";
 
 const Routes = () => {
   return (
@@ -10,16 +8,7 @@ const Routes = () => {
       <Route exact path="/">
         <Redirect to="/inbox" />
       </Route>
-      <Route
-        path="/inbox"
-        exact
-        component={() => <MainEmailPage mailboxRoute={Constants.INBOX_ROUTE} />}
-      />
-      <Route
-        path="/sent"
-        exact
-        component={() => <MainEmailPage mailboxRoute={Constants.SENT_ROUTE} />}
-      />
+      <Route path="/inbox" exact component={() => <PageWrapper />} />
     </BrowserRouter>
   );
 };

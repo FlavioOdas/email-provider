@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { useSessionContext } from '../../contexts/sessionContext';
+import { useState } from "react";
+import { useSessionContext } from "../../../../contexts/sessionContext";
 
-import './styles.css';
+import "./styles.css";
 
 // create a modal with a form to login containing only email
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const { setUser } = useSessionContext();
 
   return (
