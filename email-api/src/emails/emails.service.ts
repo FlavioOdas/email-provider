@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { EmailDocument } from '../emails.schema';
-import { CreateEmailDto } from '../dto/create-email.dto';
-import { UpdateEmailDto } from '../dto/update-email.dto';
+import { EmailDocument } from './emails.schema';
+import { CreateEmailDto } from './dto/create-email.dto';
+import { UpdateEmailDto } from './dto/update-email.dto';
 
 @Injectable()
 export class EmailsService {
@@ -25,7 +25,7 @@ export class EmailsService {
   // Find all emails
   async findAll(): Promise<EmailDocument[]> {
     try {
-      return await this.emailModel.find().exec();
+      return await this.emailModel.find();
     } catch (error) {
       console.error(error);
       throw error;
@@ -33,9 +33,9 @@ export class EmailsService {
   }
 
   // Find a single email
-  async findOne(id: string): Promise<EmailDocument> {
+  async findEmail(id: string): Promise<EmailDocument> {
     try {
-      return await this.emailModel.findById(id).exec();
+      return await this.emailModel.findById(id);
     } catch (error) {
       console.error(error);
       throw error;
@@ -45,7 +45,7 @@ export class EmailsService {
   // Find all emails from a specific recipient
   async findByRecipient(recipient: string): Promise<EmailDocument[]> {
     try {
-      return await this.emailModel.find({ recipient }).exec();
+      return await this.emailModel.find({ recipient });
     } catch (error) {
       console.error(error);
       throw error;
@@ -55,7 +55,17 @@ export class EmailsService {
   // Find all emails from a specific sender
   async findBySender(sender: string): Promise<EmailDocument[]> {
     try {
-      return await this.emailModel.find({ sender }).exec();
+      return await this.emailModel.find({ sender });
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  // Find all emails that have moved to trash
+  async findTrash(recipient: string): Promise<EmailDocument[]> {
+    try {
+      return await this.emailModel.find({ recipient, deleted: true });
     } catch (error) {
       console.error(error);
       throw error;

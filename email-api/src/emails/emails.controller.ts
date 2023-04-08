@@ -1,17 +1,26 @@
 import { Controller, Post, Body, Get, Param, Put } from '@nestjs/common';
-import { EmailsService } from '../service/emails.service';
-import { CreateEmailDto } from '../dto/create-email.dto';
-import { EmailDocument } from '../emails.schema';
-import { UpdateEmailDto } from '../dto/update-email.dto';
+import { EmailsService } from './emails.service';
+import { CreateEmailDto } from './dto/create-email.dto';
+import { EmailDocument } from './emails.schema';
+import { UpdateEmailDto } from './dto/update-email.dto';
+import { EmailsGateway } from './email.gateway';
 
 @Controller('emails')
 export class EmailsController {
-  constructor(private readonly emailsService: EmailsService) {}
+  constructor(
+    private readonly emailsService: EmailsService,
+    private readonly emailsGateway: EmailsGateway,
+  ) {}
 
   // Create a new email
   @Post()
   async createEmail(@Body() email: CreateEmailDto): Promise<EmailDocument> {
-    return await this.emailsService.create(email);
+    const createdEmail = await this.emailsService.create(email);
+
+    // Send email to all connected clients
+    this.emailsGateway.handleNewEmail(createdEmail);
+
+    return createdEmail;
   }
 
   // Find all emails
@@ -22,12 +31,12 @@ export class EmailsController {
 
   // Find a single email and returns all data inside it
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<EmailDocument> {
-    return await this.emailsService.findOne(id);
+  async findEmail(@Param('id') id: string): Promise<EmailDocument> {
+    return await this.emailsService.findEmail(id);
   }
 
   // Find all emails from a specific recipient
-  @Get('recipient/:recipient')
+  @Get('inbox/:recipient')
   async findByRecipient(
     @Param('recipient') recipient: string,
   ): Promise<EmailDocument[]> {
@@ -35,11 +44,19 @@ export class EmailsController {
   }
 
   // Find all emails from a specific sender
-  @Get('sender/:sender')
+  @Get('sent/:sender')
   async findBySender(
     @Param('sender') sender: string,
   ): Promise<EmailDocument[]> {
     return await this.emailsService.findBySender(sender);
+  }
+
+  // Find all emails moved to trash
+  @Get('trash/:recipient')
+  async findByTrash(
+    @Param('recipient') recipient: string,
+  ): Promise<EmailDocument[]> {
+    return await this.emailsService.findTrash(recipient);
   }
 
   // Update email
