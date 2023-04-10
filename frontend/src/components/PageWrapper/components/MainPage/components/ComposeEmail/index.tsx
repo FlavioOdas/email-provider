@@ -1,10 +1,10 @@
 // component to compose email
-import React, { useState } from "react";
-import { useSessionContext } from "../../../../../../contexts/sessionContext";
-import { EmailAPI } from "../../../../../../services/emailAPI";
+import React, { useState } from 'react';
+import { useSessionContext } from '../../../../../../contexts/sessionContext';
+import { EmailAPI } from '../../../../../../services/emailAPI';
 
-import "./styles.css";
-import { SendEmailRequest } from "../../../../../../typings/email-api";
+import './styles.css';
+import { SendEmailRequest } from '../../../../../../typings/email-api';
 
 interface ComposeEmailProps {
   composeEmailIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,9 +13,9 @@ interface ComposeEmailProps {
 const ComposeEmail: React.FC<ComposeEmailProps> = ({ composeEmailIsOpen }) => {
   const { user } = useSessionContext();
 
-  const [to, setTo] = useState("");
-  const [subject, setSubject] = useState("");
-  const [body, setBody] = useState("");
+  const [to, setTo] = useState('');
+  const [subject, setSubject] = useState('');
+  const [body, setBody] = useState('');
 
   const handleSendEmail = () => {
     if (!user) return;
@@ -29,11 +29,11 @@ const ComposeEmail: React.FC<ComposeEmailProps> = ({ composeEmailIsOpen }) => {
 
     EmailAPI.sendEmail(email)
       .then((res) => {
-        console.log("res", res);
+        console.log('res', res);
         composeEmailIsOpen(false);
       })
       .catch((err) => {
-        console.log("err", err);
+        console.log('err', err);
       });
   };
 
@@ -61,6 +61,7 @@ const ComposeEmail: React.FC<ComposeEmailProps> = ({ composeEmailIsOpen }) => {
             <div className="compose-email-container-content-form-field email-to">
               <label htmlFor="to">To</label>
               <input
+                data-testid="to"
                 type="email"
                 name="to"
                 id="to"
@@ -70,6 +71,7 @@ const ComposeEmail: React.FC<ComposeEmailProps> = ({ composeEmailIsOpen }) => {
             <div className="compose-email-container-content-form-field email-subject">
               <label htmlFor="subject">Subject</label>
               <input
+                data-testid="subject"
                 type="text"
                 name="subject"
                 id="subject"
@@ -78,6 +80,7 @@ const ComposeEmail: React.FC<ComposeEmailProps> = ({ composeEmailIsOpen }) => {
             </div>
             <div className="compose-email-container-content-form-field">
               <textarea
+                data-testid="body"
                 name="body"
                 id="body"
                 cols={30}

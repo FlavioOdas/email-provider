@@ -1,7 +1,7 @@
-import React from "react";
-import { Email } from "../../../../../../typings/email";
+import React from 'react';
+import { Email } from '../../../../../../typings/email';
 
-import "./styles.css";
+import './styles.css';
 
 interface EmailListProps {
   emails: Email[];
@@ -32,8 +32,9 @@ const EmailList: React.FC<EmailListProps> = ({ emails, loading }) => {
                         <span className="email-list-item-content-subject-text">
                           {email.subject}
                         </span>
+                        &nbsp;-&nbsp;
                         <span className="email-list-item-content-body-text">
-                          &nbsp;-&nbsp;{email.body}
+                          {email.body}
                         </span>
                       </div>
                     </div>
