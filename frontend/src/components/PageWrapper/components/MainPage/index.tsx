@@ -37,7 +37,7 @@ const MainEmailPage: React.FC<MainEmailPageProps> = ({ socket }) => {
     trash: { loader: EmailAPI.getTrashEmails, data: [] },
   });
 
-  const updateDataLoaders = async (
+  const updateDataLoaders = (
     dataLoaders: DataLoaders,
     user: string,
     activeTab: string
@@ -91,7 +91,7 @@ const MainEmailPage: React.FC<MainEmailPageProps> = ({ socket }) => {
   }, [dataLoaders]);
 
   return (
-    <section className="main-page">
+    <section className="main-page" data-testid="main-page">
       {composeEmail && <ComposeEmail composeEmailIsOpen={setComposeEmail} />}
 
       <FolderTabs

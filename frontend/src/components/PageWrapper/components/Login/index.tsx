@@ -9,7 +9,7 @@ const Login = () => {
   const { setUser } = useSessionContext();
 
   return (
-    <div className="login">
+    <div className="login" data-testid="login">
       <div className="login-container">
         <div className="login-container-header">
           <h1 className="login-container-header-title">Login</h1>
@@ -28,11 +28,14 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
+                data-testid="email-input"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="login-container-content-form-field">
-              <button type="submit">Login</button>
+              <button type="submit" data-testid="login-button">
+                Login
+              </button>
             </div>
           </form>
         </div>

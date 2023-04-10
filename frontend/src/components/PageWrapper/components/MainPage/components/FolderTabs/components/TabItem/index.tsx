@@ -16,7 +16,11 @@ const TabItem: React.FC<TabItemProps> = ({
   }, [title, activeTab]);
 
   return (
-    <div className={tabClass} onClick={() => handleTabChange(title)}>
+    <div
+      data-testid={title}
+      className={tabClass}
+      onClick={() => handleTabChange(title)}
+    >
       <span className="email-folders-item-text">{title}</span>
     </div>
   );

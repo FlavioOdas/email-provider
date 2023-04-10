@@ -6,6 +6,7 @@ import { EmailsService } from '../emails.service';
 import { EmailModel } from './support/email.model';
 import { emailStub } from './stubs/email.stub';
 import { CreateEmailDto } from '../dto/create-email.dto';
+import { UpdateEmailDto } from '../dto/update-email.dto';
 
 describe('EmailsService', () => {
   let emailsService: EmailsService;
@@ -154,6 +155,58 @@ describe('EmailsService', () => {
 
         test('then it should return an email', () => {
           expect(email).toEqual(emailStub());
+        });
+      });
+    });
+  });
+
+  describe('Update operations', () => {
+    let emailModel: EmailModel;
+
+    beforeEach(async () => {
+      const moduleRef = await Test.createTestingModule({
+        providers: [
+          EmailsService,
+          {
+            provide: getModelToken('Email'),
+            useClass: EmailModel,
+          },
+        ],
+      }).compile();
+
+      emailsService = moduleRef.get<EmailsService>(EmailsService);
+      emailModel = moduleRef.get<EmailModel>(getModelToken('Email'));
+    });
+
+    describe('update', () => {
+      describe('when update is called', () => {
+        let result: Email;
+        let updateEmailDto: UpdateEmailDto;
+
+        beforeEach(async () => {
+          updateEmailDto = {
+            sender: emailStub().sender,
+            recipient: emailStub().recipient,
+            subject: emailStub().subject,
+            body: emailStub().body,
+            read: emailStub().read,
+            deleted: emailStub().deleted,
+          };
+
+          jest.spyOn(emailModel, 'findByIdAndUpdate');
+          result = await emailsService.update(emailStub()._id, updateEmailDto);
+        });
+
+        test('then it should call emailModel', () => {
+          expect(emailModel.findByIdAndUpdate).toHaveBeenCalledWith(
+            emailStub()._id,
+            updateEmailDto,
+            { new: true },
+          );
+        });
+
+        test('then it should return an email', () => {
+          expect(result).toEqual(emailStub());
         });
       });
     });

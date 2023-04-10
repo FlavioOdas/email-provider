@@ -20,7 +20,7 @@ const EmailList: React.FC<EmailListProps> = ({ emails, loading }) => {
           {emails.length > 0 ? (
             emails.map((email) => {
               return (
-                <li className="email-list-item">
+                <li key={email.id} className="email-list-item">
                   <div className="email-list-item-content">
                     <div className="email-list-item-content-wrapper">
                       <div className="email-list-item-content-sender">
