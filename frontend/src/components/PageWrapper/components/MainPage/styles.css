@@ -9,7 +9,7 @@
 
 .main-page-container-menu {
   display: flex;
-  width: 12%;
+  width: 15%;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -40,7 +40,7 @@
 }
 
 .email-compose-button::before {
-  content: "";
+  content: '';
   background-image: url(https://www.gstatic.com/images/icons/material/system_gm/1x/create_black_24dp.png);
   background-size: 24px;
   height: 20px;
@@ -71,4 +71,25 @@
   overflow-y: hidden;
   padding: 50px 0;
   margin-right: 10px;
+}
+
+@media (max-width: 900px) {
+  .main-page {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .main-page-container-mailbox {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .main-page-container-menu {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .email-compose {
+    width: 100%;
+  }
 }

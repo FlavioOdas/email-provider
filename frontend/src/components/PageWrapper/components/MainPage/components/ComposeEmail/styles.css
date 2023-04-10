@@ -36,7 +36,7 @@
 }
 
 .compose-email-container-header-close::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 24px;
   height: 24px;
@@ -120,4 +120,12 @@
 
 .compose-email-container-content-form-field button:focus {
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .compose-email {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+  }
 }

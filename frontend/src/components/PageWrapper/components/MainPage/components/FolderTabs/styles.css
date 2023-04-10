@@ -76,3 +76,13 @@
   margin-left: 10px;
   text-transform: capitalize;
 }
+
+@media (max-width: 900px) {
+  .email-folders {
+    padding-right: 0;
+  }
+
+  .email-folders-item {
+    border-radius: 16px;
+  }
+}

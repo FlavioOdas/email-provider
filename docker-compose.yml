@@ -8,15 +8,26 @@ services:
       - mongodb_data_container:/data/db
 
   api:
-    build: .
+    build: ./server
     volumes:
       - .:/app
       - /app/node_modules
     ports:
       - 3000:3000
-    command: npm run start:dev
+    command: npm run start
     depends_on:
       - mongodb
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3001:3001
+    command: npm run start
+    depends_on:
+      - api
 
 volumes:
   mongodb_data_container:
