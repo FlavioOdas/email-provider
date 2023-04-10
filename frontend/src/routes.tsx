@@ -1,6 +1,6 @@
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 
-import PageWrapper from "./components/PageWrapper";
+import PageWrapper from './components/PageWrapper';
 
 const Routes = () => {
   return (

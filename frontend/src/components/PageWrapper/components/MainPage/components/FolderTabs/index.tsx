@@ -1,7 +1,8 @@
-import React from "react";
-import TabItem from "./components/TabItem";
+import React from 'react';
 
-import "./styles.css";
+import TabItem from './components/TabItem';
+
+import './styles.css';
 
 interface FolderTabsProps {
   activeTab: string;

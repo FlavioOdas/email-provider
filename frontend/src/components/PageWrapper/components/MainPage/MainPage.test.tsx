@@ -1,13 +1,17 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import React from 'react';
-import { render, fireEvent, screen, act } from '@testing-library/react';
-import MainEmailPage from './index';
-import MockSocket from 'socket.io-mock';
-import { useSessionContext } from '../../../../contexts/sessionContext';
-import { EmailAPI } from '../../../../services/emailAPI';
-import { emailStubArray } from '../../../../test/stubs/email.stub';
+
 import { DefaultEventsMap } from '@socket.io/component-emitter';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Socket } from 'socket.io-client';
+import MockSocket from 'socket.io-mock';
+
+import { EmailAPI } from '../../../../services/emailAPI';
+
+import { useSessionContext } from '../../../../contexts/sessionContext';
+
+import { emailStubArray } from '../../../../test/stubs/email.stub';
+import MainEmailPage from './index';
 
 // Mock the socket.io-client
 jest.mock('socket.io-client', () => {

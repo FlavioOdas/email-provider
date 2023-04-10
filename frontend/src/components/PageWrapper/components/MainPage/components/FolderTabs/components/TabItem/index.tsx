@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 
 interface TabItemProps {
   title: string;
@@ -12,7 +12,7 @@ const TabItem: React.FC<TabItemProps> = ({
   handleTabChange,
 }) => {
   const tabClass = useMemo(() => {
-    return `email-folders-item ${title} ${activeTab === title ? "active" : ""}`;
+    return `email-folders-item ${title} ${activeTab === title ? 'active' : ''}`;
   }, [title, activeTab]);
 
   return (

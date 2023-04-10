@@ -1,4 +1,4 @@
-import { Email } from "./email";
+import { Email } from './email';
 
 type DataLoader = {
   loader: (user: string) => Promise<Email[]>;

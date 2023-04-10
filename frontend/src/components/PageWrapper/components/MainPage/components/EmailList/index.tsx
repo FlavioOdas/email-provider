@@ -1,6 +1,6 @@
 import React from 'react';
-import { Email } from '../../../../../../typings/email';
 
+import { Email } from '../../../../../../typings/email';
 import './styles.css';
 
 interface EmailListProps {

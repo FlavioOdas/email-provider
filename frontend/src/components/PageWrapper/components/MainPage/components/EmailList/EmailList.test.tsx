@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { render, screen } from '@testing-library/react';
-import EmailList from './index';
+
 import { emailStubArray } from '../../../../../../test/stubs/email.stub';
+import EmailList from './index';
 
 describe('EmailList', () => {
   it('should render a loading message when loading prop is true', () => {

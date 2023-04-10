@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+
 import { useSessionContext } from '../../../../contexts/sessionContext';
 import Login from './index';
 
@@ -30,7 +31,7 @@ describe('Login', () => {
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.click(loginButton);
     expect(useSessionContext().setUser).toHaveBeenCalledWith(
-      'test@example.com'
+      'test@example.com',
     );
   });
 });

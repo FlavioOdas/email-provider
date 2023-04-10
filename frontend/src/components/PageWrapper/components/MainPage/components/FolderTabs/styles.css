@@ -28,7 +28,7 @@
 }
 
 .email-folders-item.inbox::before {
-  content: "";
+  content: '';
   background-image: url(https://www.gstatic.com/images/icons/material/system_gm/1x/inbox_black_24dp.png);
   background-size: 20px;
   height: 20px;
@@ -39,7 +39,7 @@
 }
 
 .email-folders-item.sent::before {
-  content: "";
+  content: '';
   background-image: url(https://www.gstatic.com/images/icons/material/system_gm/1x/send_black_24dp.png);
   background-size: 20px;
   height: 20px;
@@ -50,7 +50,7 @@
 }
 
 .email-folders-item.trash::before {
-  content: "";
+  content: '';
   background-image: url(https://www.gstatic.com/images/icons/material/system_gm/1x/delete_black_24dp.png);
   background-size: 20px;
   height: 20px;

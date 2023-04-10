@@ -1,0 +1,15 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "importOrder": [
+    "^react",
+    "^@?\\w",
+    "^(.*)/components/(.*)$",
+    "^(.*)/services/(.*)$",
+    "^(.*)/contexts/(.*)$",
+    "^[./]",
+    "^\\u0000"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

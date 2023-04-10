@@ -1,10 +1,9 @@
 // this will create a context for the session containing the user e-mail
-
 import React, {
-  createContext,
-  useState,
-  useContext,
   PropsWithChildren,
+  createContext,
+  useContext,
+  useState,
 } from 'react';
 
 interface SessionContextData {

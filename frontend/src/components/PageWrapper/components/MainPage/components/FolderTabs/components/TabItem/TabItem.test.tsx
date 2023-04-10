@@ -1,5 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+
+import { fireEvent, render } from '@testing-library/react';
+
 import TabItem from './index';
 
 describe('TabItem component', () => {
@@ -11,7 +13,7 @@ describe('TabItem component', () => {
         title="inbox"
         activeTab="inbox"
         handleTabChange={mockHandleTabChange}
-      />
+      />,
     );
     expect(getByText('inbox')).toBeInTheDocument();
   });
@@ -22,7 +24,7 @@ describe('TabItem component', () => {
         title="inbox"
         activeTab="inbox"
         handleTabChange={mockHandleTabChange}
-      />
+      />,
     );
     expect(getByTestId('inbox')).toHaveClass('active');
   });
@@ -33,7 +35,7 @@ describe('TabItem component', () => {
         title="inbox"
         activeTab="sent"
         handleTabChange={mockHandleTabChange}
-      />
+      />,
     );
     expect(getByTestId('inbox')).not.toHaveClass('active');
   });
@@ -44,7 +46,7 @@ describe('TabItem component', () => {
         title="inbox"
         activeTab="sent"
         handleTabChange={mockHandleTabChange}
-      />
+      />,
     );
     fireEvent.click(getByTestId('inbox'));
     expect(mockHandleTabChange).toHaveBeenCalledWith('inbox');

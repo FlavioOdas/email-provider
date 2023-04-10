@@ -1,8 +1,12 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import ComposeEmail from './index';
-import { useSessionContext } from '../../../../../../contexts/sessionContext';
+
+import { fireEvent, render, screen } from '@testing-library/react';
+
 import { EmailAPI } from '../../../../../../services/emailAPI';
+
+import { useSessionContext } from '../../../../../../contexts/sessionContext';
+
+import ComposeEmail from './index';
 
 jest.mock('../../../../../../contexts/sessionContext');
 jest.mock('../../../../../../services/emailAPI');

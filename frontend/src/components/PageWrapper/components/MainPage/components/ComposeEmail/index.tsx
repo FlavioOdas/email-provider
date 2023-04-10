@@ -1,10 +1,12 @@
 // component to compose email
 import React, { useState } from 'react';
-import { useSessionContext } from '../../../../../../contexts/sessionContext';
+
 import { EmailAPI } from '../../../../../../services/emailAPI';
 
-import './styles.css';
+import { useSessionContext } from '../../../../../../contexts/sessionContext';
+
 import { SendEmailRequest } from '../../../../../../typings/email-api';
+import './styles.css';
 
 interface ComposeEmailProps {
   composeEmailIsOpen: React.Dispatch<React.SetStateAction<boolean>>;

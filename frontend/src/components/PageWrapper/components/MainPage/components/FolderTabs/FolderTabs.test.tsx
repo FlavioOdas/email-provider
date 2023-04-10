@@ -1,5 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+
+import { fireEvent, render } from '@testing-library/react';
+
 import FolderTabs from './index';
 
 test('renders FolderTabs component with correct props', () => {
@@ -11,7 +13,7 @@ test('renders FolderTabs component with correct props', () => {
       activeTab={activeTab}
       setComposeEmail={setComposeEmail}
       setActiveTab={setActiveTab}
-    />
+    />,
   );
 
   const composeButton = getByText('Compose');
