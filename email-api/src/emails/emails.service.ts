@@ -75,9 +75,9 @@ export class EmailsService {
   // Update email
   async update(id: string, emailData: UpdateEmailDto): Promise<EmailDocument> {
     try {
-      return await this.emailModel
-        .findByIdAndUpdate(id, emailData, { new: true })
-        .exec();
+      return await this.emailModel.findByIdAndUpdate(id, emailData, {
+        new: true,
+      });
     } catch (error) {
       console.error(error);
       throw error;
